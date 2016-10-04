@@ -164,7 +164,7 @@ class ScriptyBotFactory(BotFactory):
 if __name__ == "__main__":
     host = "coop.test.adtran.com"
     port = 6667
-    chan = "theatre" #"THE_MAGIC_CONCH_ROOM" "test" "main"
+    chan = "theater" #"THE_MAGIC_CONCH_ROOM" "test" "main"
     other_channels = ["#main", "#THE_MAGIC_CONCH_ROOM"]
     reactor.connectTCP(host, port, ScriptyBotFactory("#" + chan, "Scripty", other_channels))
     reactor.run()
