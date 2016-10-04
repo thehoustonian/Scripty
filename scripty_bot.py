@@ -67,9 +67,9 @@ class ScriptyBot(Bot):
         string_array = []
         for line in file:
             line.replace('\xef\xbf\xbd', "'")
-            while len(line) > max_line_length:
+            """while len(line) > max_line_length:
                 string_array.append(line[:max_line_length])
-                line = line[max_line_length:]
+                line = line[max_line_length:]"""
             string_array.append(line)
         file.close()
         return string_array
@@ -93,7 +93,7 @@ class ScriptyBot(Bot):
             wait_time = 0
             for line in formatted_file:
                 reactor.callLater(wait_time, self.respond, line)
-                wait_time += 1.4
+                wait_time += 4
             reactor.callLater(wait_time, self.respond, "Show's over! Hope you enjoyed it!")
             reactor.callLater(wait_time, self.display_title, "Nothing")
 
@@ -162,7 +162,7 @@ class ScriptyBotFactory(BotFactory):
         self.other_channels = other_channels
 
 if __name__ == "__main__":
-    host = "127.0.0.1"
+    host = "coop.test.adtran.com"
     port = 6667
     chan = "theatre" #"THE_MAGIC_CONCH_ROOM" "test" "main"
     other_channels = ["#main", "#THE_MAGIC_CONCH_ROOM"]
