@@ -132,7 +132,7 @@ class ScriptyBot(Bot):
                     continue
             self.respond('Fine, be that way. I can really feel the love :/')
             self.display_title('Nothing...')
-        elif 'list files' in message:
+        elif 'list' in message[1] and 'files' in message[2]:
             self.respond("Alright, here's what I have: ")
             self.respond(self.get_available_files())
         else:
