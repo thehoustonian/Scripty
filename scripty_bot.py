@@ -20,6 +20,7 @@ class ScriptyBot(Bot):
         self.bot_name = "Scripty"
         self.delay_time = 4
         self.min_delay_time = 3
+        self.max_delay_time = 20
         self.currently_showing = False
         self.intermission_frequency = 1800
         self.intermission_duration = 120
@@ -67,11 +68,12 @@ class ScriptyBot(Bot):
         max_line_length = 150
         string_array = []
         for line in file:
-            line.replace('\xef\xbf\xbd', "'")
-            """while len(line) > max_line_length:
-                string_array.append(line[:max_line_length])
-                line = line[max_line_length:]"""
-            string_array.append(line)
+            line.rstrip()
+            if line:
+                # line.replace('\xef\xbf\xbd', "'")
+                string_array.append(line)
+            else:
+                continue
         file.close()
         return string_array
 
@@ -128,6 +130,8 @@ class ScriptyBot(Bot):
     def set_delay_time(self, delay_time):
         if delay_time <= self.min_delay_time:
             self.delay_time = self.min_delay_time
+        elif delay_time >= self.max_delay_time:
+            self.delay_time = self.max_delay_time
         else:
             self.delay_time = delay_time
         self.respond('Delay time set to: %s seconds' % self.delay_time)
