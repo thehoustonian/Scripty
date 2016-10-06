@@ -164,14 +164,13 @@ class ScriptyBot(Bot):
         elif 'play' in message[1]:
             if length == 2:
                 self.respond("Hey, you've gotta give me a filename to play!")
-                self.respond("Here are the available options: %s" %self.get_available_files())
+                self.respond("Here are the available options: %s" % self.get_available_files())
             else:
                 self.respond("Got it!")
                 self.play(message[2])
 
         elif 'list' in message[1] and length >= 3 and 'files' in message[2]:
-            self.respond("Alright, here's what I have: ")
-            self.respond(self.get_available_files())
+            self.respond("Alright, here's what I have: %s " % self.get_available_files())
 
         elif 'set' in message[1] and length >= 4 and 'delay' in message[2]:
             self.respond('Setting delay between lines to %s seconds' % message[3])
