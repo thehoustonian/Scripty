@@ -153,6 +153,7 @@ class ScriptyBot(Bot):
                     continue
             self.respond('Fine, be that way. I can really feel the love :/')
             self.display_title('Nothing...')
+            self.set_out_of_show()
 
         elif self.get_show_status():
             self.respond("Shhhh! I'm trying to read the show!")
@@ -174,7 +175,7 @@ class ScriptyBot(Bot):
 
         elif 'set' in message[1] and length >= 4 and 'delay' in message[2]:
             self.respond('Setting delay between lines to %s seconds' % message[3])
-            self.set_delay_time(message[3])
+            self.set_delay_time(int(message[3]))
 
         else:
             self.respond("Uhhh, what'd you say?")
